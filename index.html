@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="image-picker/jquery.min.js"></script>
+    <script type="text/javascript" src="image-picker/jquery.masonry.min.js"></script>
+    <script type="text/javascript" src="image-picker/image-picker.js"></script>
+    <link rel="stylesheet" href="image-picker/image-picker.css" />
+  </head>
+  <body>
+    <select class="image-picker show-labels show-html masonry" multiple="multiple">
+      <option data-img-src="http://placekitten.com/220/200" value="1">Cute Kitten 1</option>
+      <option data-img-src="http://placekitten.com/180/200" value="2">Cute Kitten 2</option>
+      <option data-img-src="http://placekitten.com/130/200" value="3">Cute Kitten 3</option>
+      <option data-img-src="http://placekitten.com/270/200" value="4">Cute Kitten 4</option>
+      <option data-img-src="http://placekitten.com/300/328" value="5">Cute Kitten 5</option>
+      <option data-img-src="http://placekitten.com/400/150" value="6">Cute Kitten 6</option>
+      <option data-img-src="http://placekitten.com/150/150" value="7">Cute Kitten 7</option>
+      <option data-img-src="http://placekitten.com/100/150" value="8">Cute Kitten 8</option>
+      <option data-img-src="http://placekitten.com/450/151" value="9">Cute Kitten 9</option>
+    </select>
+    
+    <hr/>
+
+    <select class="image-picker show-labels show-html masonry" multiple="multiple">
+      <option value="1">Cute Kitten 1</option>
+      <option value="2">Cute Kitten 2</option>
+      <option value="3">Cute Kitten 3</option>
+      <option value="4">Cute Kitten 4</option>
+      <option value="5">Cute Kitten 5</option>
+      <option value="6">Cute Kitten 6</option>
+      <option value="7">Cute Kitten 7</option>
+      <option value="8">Cute Kitten 8</option>
+      <option value="9">Cute Kitten 9</option>
+    </select>
+  </body>
+  <script type="text/javascript">
+    $("select.image-picker.show-labels").imagepicker({
+      hide_select:  true,
+      show_label:   true,
+      limit_reached:  function(){alert('We are full!')}
+    });
+    
+    var container = jQuery("select.image-picker.masonry").next("ul.thumbnails");
+      container.imagesLoaded(function(){
+        container.masonry({
+          itemSelector:   "li",
+        });
+      });
+  </script>
+</html>

@@ -138,9 +138,9 @@
       for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
         option = _ref1[_j];
         this.picker_options.push(option);
-        if (!option.has_image()) {
-          continue;
-        }
+        // if (!option.has_image()) {
+//           continue;
+//         }
         _results.push(target_container.append(option.node));
       }
       return _results;
@@ -274,15 +274,17 @@
     ImagePickerOption.prototype.create_node = function() {
       var image, thumbnail;
       this.node = jQuery("<li/>");
-      image = jQuery("<img class='image_picker_image'/>");
-      image.attr("src", this.option.data("img-src"));
       thumbnail = jQuery("<div class='thumbnail'>");
       thumbnail.click({
         option: this
       }, function(event) {
         return event.data.option.clicked();
       });
-      thumbnail.append(image);
+      if(!!this.option.data("img-src")){
+        image = jQuery("<img class='image_picker_image'/>");
+        image.attr("src", this.option.data("img-src"));
+        thumbnail.append(image);
+      }
       if (this.opts.show_label) {
         thumbnail.append(jQuery("<p/>").html(this.label()));
       }
