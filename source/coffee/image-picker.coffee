@@ -74,7 +74,7 @@ class ImagePicker
       @recursively_parse_option_groups(option_group, container)
     for option in (new ImagePickerOption(option, this, @opts) for option in scoped_dom.children("option"))
       @picker_options.push option
-      continue if !option.has_image()
+      # continue if !option.has_image()
       target_container.append option.node
 
 
@@ -155,12 +155,13 @@ class ImagePickerOption
 
   create_node: () ->
     @node = jQuery("<li/>")
-    image = jQuery("<img class='image_picker_image'/>")
-    image.attr("src", @option.data("img-src"))
     thumbnail = jQuery("<div class='thumbnail'>")
     thumbnail.click {option: this}, (event) ->
       event.data.option.clicked()
-    thumbnail.append(image)
+    if !!@option.data("img-src")
+      image = jQuery("<img class='image_picker_image'/>")
+      image.attr("src", @option.data("img-src"))
+      thumbnail.append(image)
     thumbnail.append(jQuery("<p/>").html(@label())) if @opts.show_label
     @node.append( thumbnail )
     @node

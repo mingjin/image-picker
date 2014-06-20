@@ -1,0 +1,12 @@
+{
+  "name": "image-picker",
+  "version": "0.2.4",
+  "dependencies": {
+    "coffee-script": "1.7.1",
+    "uglify-js": "2.4.14"
+  },
+  "script": {
+    "build": "coffee -c -o image-picker source/coffee",
+    "uglify": "node_modules/.bin/uglifyjs ./image-picker/image-picker.js -o ./image-picker/image-picker.min.js"
+  }
+}
